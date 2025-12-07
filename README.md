@@ -6,7 +6,7 @@
 
 - **Phase synchrony**: Incorporates Kuramoto oscillator dynamics for phase-based grouping of neurons.
 - **Modular architecture**: Supports multiple model variants (real, complex, ViT).
-- **Dataset ready**: Pre-configured for MultiMNIST and compatible with MultiMNIST with Cifar in the Backgrounf.
+- **Dataset ready**: Pre-configured for MultiMNIST and compatible with SVHN, CIFAR, and NORB loaders.
 - **Logging and checkpoints**: Integrated with Weights & Biases (wandb) and PyTorch Lightning callbacks.
 
 ## 📁 Project Structure
@@ -30,7 +30,7 @@ KomplexNet/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/S4b1n3/KomplexNet.git
+git clone https://github.com/YOUR_USERNAME/KomplexNet.git
 cd KomplexNet
 ```
 
@@ -42,15 +42,13 @@ pip install -r requirements.txt
 
 ### 3. Prepare the dataset
 
-First, download MNIST and CIFAR dataset and save them in the `./data/` repository.
-
-Then, to generate MultiMNIST:
+For example, to generate MultiMNIST:
 
 ```bash
 python make_multi_mnist.py
 ```
 
-Place the dataset in the format: `./data/<dataset>/<repo_name>/`.
+Place the dataset in the format: `../../data/<dataset>/<repo_name>/`.
 
 ## 🏃‍♀️ Running Training
 
@@ -67,8 +65,6 @@ python main.py --model small_complex --dataset MultiMNIST --in_repo default --ou
 - `--resume`: Resume from checkpoint
 - `--epochs`: Number of training epochs
 
-The `opts.py` file sets the hyper-parameters to the values presented in the paper.
-
 ## 📊 Logging
 
 Experiments are logged using **Weights & Biases**. Make sure to log in:
@@ -79,20 +75,22 @@ wandb.login()
 
 ## 📈 Evaluation
 
-After training, testing is performed using `test.py` by loading the best checkpoint.
+After training, testing is automatically performed using the best checkpoint. You can also resume and test separately if needed.
+
+## 📞 Contact
+
+For questions, please reach out to the original authors or open an issue.
+
 
 ## 📚 Citation
 
 If you use KomplexNet in your research, please cite the following paper:
 
 ```
-@article{muzellec2025enhancing,
-  title={Enhancing deep neural networks through complex-valued representations and Kuramoto synchronization dynamics},
-  author={Muzellec, Sabine and Alamia, Andrea and Serre, Thomas and VanRullen, Rufin},
-  journal={arXiv preprint arXiv:2502.21077},
+@inproceedings{muzellec2025komplexnet,
+  title={Enhancing deep neural networks through complex-valued representations and Kuramoto synchronization dynamics.},
+  author={Muzellec, Sabine, Alamia, Andrea and VanRullen, Rufin and Serre, Thomas},
+  booktitle={Transactions on Machine Learning Research (TMLR)},
   year={2025}
 }
 ```
-
-
-

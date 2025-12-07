@@ -8,7 +8,6 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ["WANDB_DIR"] = "./"
 
-import utils
 from torch.utils.data import Dataset, DataLoader, TensorDataset, ConcatDataset
 import torchvision as torchvision
 import torchvision.transforms as transforms
@@ -39,7 +38,7 @@ elif args.model == 'small_complex' :
 elif args.model == 'small_vit':
     from smaller_vit import SmallModel as Model
 
-train_loader, val_loader, test_loader = MultiMNISTLoader("../../data/{}/{}/".format(args.dataset, args.in_repo))
+train_loader, val_loader, test_loader = MultiMNISTLoader("./data/{}/{}/".format(args.dataset, args.in_repo))
 
 if 'complex' in args.model:
     model = Model(8, args.n_channels, 3, 2, True, args.num_classes, h=13, w=13, epsilon=args.epsilon,
